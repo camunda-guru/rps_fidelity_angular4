@@ -1,0 +1,5 @@
+npm install @angular/cli -g
+ng new myproject
+ng serve
+ng serve –prod
+ng build –prod –aot
