@@ -1,0 +1,28 @@
+.menuheading
+{
+    width:80%;
+    margin-left: 25%;
+    
+}
+
+ul li
+{
+    display: inline;
+    margin-right: 2%;
+    color:green;
+    background-color: white;
+    list-style: none;
+    font-size: large;
+    font-weight: bold;
+}
+
+ul li a:hover
+{
+    color:white;
+    background-color: green;
+}
+
+ul li a
+{
+    text-decoration: none;
+}
