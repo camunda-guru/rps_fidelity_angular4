@@ -1,0 +1,78 @@
+<form [formGroup]="newaccountForm" (ngSubmit)="save()">
+    <fieldset>
+        <legend>New Account</legend>
+        <input type="text" placeholder="First Name"
+        formControlName="firstName"  [formControl]="firstName">
+        <div [hidden]="firstName.valid" class="validation">
+
+            <div [hidden]="!firstName.hasError('required')">
+                First Name is required.
+            </div>
+            <div [hidden]="!firstName.hasError('pattern')">
+                Not matching pattern.</div>
+
+        </div>
+        <input type="text" placeholder="Last Name "
+        formControlName="lastName"    [formControl]="lastName">
+        <div [hidden]="lastName.valid" class="validation">
+
+            <div [hidden]="!lastName.hasError('required')">
+                Last Name is required.
+            </div>
+            <div [hidden]="!lastName.hasError('pattern')">
+                Not matching pattern.</div>
+
+        </div>
+        <input type="number" placeholder="Mobile Number"
+        formControlName="mobileNo"       [formControl]="mobileNo">
+        <div [hidden]="mobileNo.valid" class="validation">
+
+            <div [hidden]="!mobileNo.hasError('required')">
+                Mobile No is required.
+            </div>
+
+
+        </div>
+        <input type="text" placeholder="Account Type"
+        formControlName="accountType" 
+        [formControl]="accountType" list="accountTypes"
+        [(ngModel)]="selectedAccountType" (change)=
+                "onSelect($event.target.value)">
+ <div [hidden]="accountType.valid" class="validation">
+
+     <div [hidden]="!accountType.hasError('required')">
+         Account Type is required.
+     </div>
+     <div [hidden]="!accountType.hasError('pattern')">
+         Not matching pattern.</div>
+
+ </div>
+
+        <input type="text" placeholder="Family Member"
+        formControlName="familyMember" 
+               [formControl]="familyMember" (input)="onmemberChange($event.target.value)">
+        <div [hidden]="familyMember.valid" class="validation">
+
+            <div [hidden]="!familyMember.hasError('required')">
+                Family Member is required.
+            </div>
+            <div [hidden]="!familyMember.hasError('pattern')">
+                Not matching pattern.</div>
+
+        </div>
+        <mat-checkbox *ngIf="husbandVisibility" [ngModelOptions]="{standalone: true}" [(ngModel)]="husband">Husband</mat-checkbox>
+        
+        <mat-checkbox *ngIf="wifeVisibility" [ngModelOptions]="{standalone: true}" [(ngModel)]="wife">Wife</mat-checkbox>
+        <input type="submit" [disabled]="!newaccountForm.valid" value="submit">
+    </fieldset>
+
+</form>
+
+<datalist id="accountTypes">
+    <option>
+        Savings
+    </option>
+    <option>
+        Current
+    </option>
+</datalist>
