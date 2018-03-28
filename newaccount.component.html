@@ -47,6 +47,24 @@
          Not matching pattern.</div>
 
  </div>
+ <input type="text" placeholder="Country Name"
+ formControlName="countryName" 
+ [formControl]="countryName" list="countryData"
+ [(ngModel)]="selectedCountryName" (change)=
+         "onCountrySelect($event.target.value)">
+<div [hidden]="countryName.valid" class="validation">
+
+<div [hidden]="!countryName.hasError('required')">
+  Country Name is required.
+</div>
+<div [hidden]="!countryName.hasError('pattern')">
+  Not matching pattern.</div>
+
+</div>
+
+
+
+
 
         <input type="text" placeholder="Family Member"
         formControlName="familyMember" 
@@ -75,4 +93,9 @@
     <option>
         Current
     </option>
+</datalist>
+
+<datalist id="countryData">
+    <option *ngFor="let obj of countryList" value="{{obj.callingCodes}}">
+        {{obj.name}}</option>
 </datalist>
